@@ -6,7 +6,7 @@ class UsuarioRepository {
     async salvar(usuario) {
         await this.usuarios.push(usuario);
     }
-    async listar() {
+    async listar(usuario) {
         return await this.usuarios;
     }
 }

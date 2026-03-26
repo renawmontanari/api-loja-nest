@@ -13,16 +13,16 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsuarioController = void 0;
-const usuario_repository_1 = require("./usuario.repository");
 const common_1 = require("@nestjs/common");
+const usuario_repository_1 = require("./usuario.repository");
 let UsuarioController = class UsuarioController {
     UsuarioRepository = new usuario_repository_1.UsuarioRepository();
     async criaUsuario(dadosDoUsuario) {
         await this.UsuarioRepository.salvar(dadosDoUsuario);
         return dadosDoUsuario;
     }
-    async listarUsuarios() {
-        return this.UsuarioRepository.listar();
+    async listarUsuarios(usuario) {
+        return await this.UsuarioRepository.listar(usuario);
     }
 };
 exports.UsuarioController = UsuarioController;
@@ -36,7 +36,7 @@ __decorate([
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], UsuarioController.prototype, "listarUsuarios", null);
 exports.UsuarioController = UsuarioController = __decorate([
