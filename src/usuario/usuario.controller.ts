@@ -3,16 +3,16 @@ import { UsuarioRepository } from "./usuario.repository";
 
 @Controller("/usuarios")
 export class UsuarioController {
-  private UsuarioRepository: UsuarioRepository = new UsuarioRepository();
+  constructor(private UsuarioRepository: UsuarioRepository) {}
 
   @Post()
   async criaUsuario(@Body() dadosDoUsuario: string) {
-    await this.UsuarioRepository.salvar(dadosDoUsuario);
+    this.UsuarioRepository.salvar(dadosDoUsuario);
     return dadosDoUsuario;
   }
 
   @Get()
-  async listarUsuarios(usuario: string) {
-    return await this.UsuarioRepository.listar(usuario);
+  async listarUsuarios() {
+    return this.UsuarioRepository.listar();
   }
 }

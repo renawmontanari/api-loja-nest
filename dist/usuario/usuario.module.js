@@ -9,12 +9,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsuarioModule = void 0;
 const common_1 = require("@nestjs/common");
 const usuario_controller_1 = require("./usuario.controller");
+const usuario_repository_1 = require("./usuario.repository");
 let UsuarioModule = class UsuarioModule {
 };
 exports.UsuarioModule = UsuarioModule;
 exports.UsuarioModule = UsuarioModule = __decorate([
     (0, common_1.Module)({
         controllers: [usuario_controller_1.UsuarioController],
+        providers: [usuario_repository_1.UsuarioRepository],
     })
 ], UsuarioModule);
 //# sourceMappingURL=usuario.module.js.map

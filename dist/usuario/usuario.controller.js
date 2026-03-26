@@ -16,13 +16,16 @@ exports.UsuarioController = void 0;
 const common_1 = require("@nestjs/common");
 const usuario_repository_1 = require("./usuario.repository");
 let UsuarioController = class UsuarioController {
-    UsuarioRepository = new usuario_repository_1.UsuarioRepository();
+    UsuarioRepository;
+    constructor(UsuarioRepository) {
+        this.UsuarioRepository = UsuarioRepository;
+    }
     async criaUsuario(dadosDoUsuario) {
-        await this.UsuarioRepository.salvar(dadosDoUsuario);
+        this.UsuarioRepository.salvar(dadosDoUsuario);
         return dadosDoUsuario;
     }
-    async listarUsuarios(usuario) {
-        return await this.UsuarioRepository.listar(usuario);
+    async listarUsuarios() {
+        return this.UsuarioRepository.listar();
     }
 };
 exports.UsuarioController = UsuarioController;
@@ -36,10 +39,11 @@ __decorate([
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], UsuarioController.prototype, "listarUsuarios", null);
 exports.UsuarioController = UsuarioController = __decorate([
-    (0, common_1.Controller)("/usuarios")
+    (0, common_1.Controller)("/usuarios"),
+    __metadata("design:paramtypes", [usuario_repository_1.UsuarioRepository])
 ], UsuarioController);
 //# sourceMappingURL=usuario.controller.js.map
