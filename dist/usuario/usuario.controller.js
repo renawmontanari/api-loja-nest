@@ -49,6 +49,13 @@ let UsuarioController = class UsuarioController {
             message: "Usuário atualizado com sucesso!",
         };
     }
+    async deletarUsuario(id) {
+        const usuarioDeletado = this.UsuarioRepository.deletar(id);
+        return {
+            usuario: usuarioDeletado,
+            message: "Usuário deletado com sucesso!",
+        };
+    }
 };
 exports.UsuarioController = UsuarioController;
 __decorate([
@@ -72,6 +79,13 @@ __decorate([
     __metadata("design:paramtypes", [String, AtualizaUsuario_dto_1.AtualizaUsuarioDTO]),
     __metadata("design:returntype", Promise)
 ], UsuarioController.prototype, "atualizarUsuario", null);
+__decorate([
+    (0, common_1.Delete)("/:id"),
+    __param(0, (0, common_1.Param)("id")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], UsuarioController.prototype, "deletarUsuario", null);
 exports.UsuarioController = UsuarioController = __decorate([
     (0, common_1.Controller)("/usuarios"),
     __metadata("design:paramtypes", [usuario_repository_1.UsuarioRepository])

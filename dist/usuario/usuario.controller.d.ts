@@ -15,4 +15,8 @@ export declare class UsuarioController {
         usuario: Promise<UsuarioEntity>;
         message: string;
     }>;
+    deletarUsuario(id: string): Promise<{
+        usuario: Promise<UsuarioEntity>;
+        message: string;
+    }>;
 }
