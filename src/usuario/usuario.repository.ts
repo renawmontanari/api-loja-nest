@@ -1,11 +1,10 @@
 import { Injectable } from "@nestjs/common";
-import { CriaUsuarioDTO } from "./dto/CriaUsuario.dto";
 
 @Injectable()
 export class UsuarioRepository {
-  private usuarios: CriaUsuarioDTO[] = [];
+  private usuarios: string[] = [];
 
-  async salvar(usuario: CriaUsuarioDTO) {
+  async salvar(usuario: string) {
     this.usuarios.push(usuario);
   }
 
