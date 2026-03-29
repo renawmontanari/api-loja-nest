@@ -18,6 +18,7 @@ const usuario_repository_1 = require("./usuario.repository");
 const CriaUsuario_dto_1 = require("./dto/CriaUsuario.dto");
 const usuario_entity_1 = require("./usuario.entity");
 const uuid_1 = require("uuid");
+const ListaUsuario_dto_1 = require("./dto/ListaUsuario.dto");
 let UsuarioController = class UsuarioController {
     UsuarioRepository;
     constructor(UsuarioRepository) {
@@ -30,10 +31,15 @@ let UsuarioController = class UsuarioController {
         usuarioEntity.nome = dadosDoUsuario.nome;
         usuarioEntity.id = (0, uuid_1.v4)();
         this.UsuarioRepository.salvar(usuarioEntity);
-        return { id: usuarioEntity.id, message: "Usuário criado com sucesso!" };
+        return {
+            usuario: new ListaUsuario_dto_1.ListaUsuarioDTO(usuarioEntity.id, usuarioEntity.nome),
+            message: "Usuário criado com sucesso!",
+        };
     }
     async listarUsuarios() {
-        return this.UsuarioRepository.listar();
+        const usuariosSalvos = await this.UsuarioRepository.listar();
+        const usuariosExistentesLista = usuariosSalvos.map((usuario) => new ListaUsuario_dto_1.ListaUsuarioDTO(usuario.id, usuario.nome));
+        return usuariosExistentesLista;
     }
 };
 exports.UsuarioController = UsuarioController;
