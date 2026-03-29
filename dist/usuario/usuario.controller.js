@@ -19,6 +19,7 @@ const CriaUsuario_dto_1 = require("./dto/CriaUsuario.dto");
 const usuario_entity_1 = require("./usuario.entity");
 const uuid_1 = require("uuid");
 const ListaUsuario_dto_1 = require("./dto/ListaUsuario.dto");
+const AtualizaUsuario_dto_1 = require("./dto/AtualizaUsuario.dto");
 let UsuarioController = class UsuarioController {
     UsuarioRepository;
     constructor(UsuarioRepository) {
@@ -41,6 +42,13 @@ let UsuarioController = class UsuarioController {
         const usuariosExistentesLista = usuariosSalvos.map((usuario) => new ListaUsuario_dto_1.ListaUsuarioDTO(usuario.id, usuario.nome));
         return usuariosExistentesLista;
     }
+    async atualizarUsuario(id, novosDados) {
+        const usuarioAtualizado = this.UsuarioRepository.atualizar(id, novosDados);
+        return {
+            usuario: usuarioAtualizado,
+            message: "Usuário atualizado com sucesso!",
+        };
+    }
 };
 exports.UsuarioController = UsuarioController;
 __decorate([
@@ -56,6 +64,14 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], UsuarioController.prototype, "listarUsuarios", null);
+__decorate([
+    (0, common_1.Put)("/:id"),
+    __param(0, (0, common_1.Param)("id")),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, AtualizaUsuario_dto_1.AtualizaUsuarioDTO]),
+    __metadata("design:returntype", Promise)
+], UsuarioController.prototype, "atualizarUsuario", null);
 exports.UsuarioController = UsuarioController = __decorate([
     (0, common_1.Controller)("/usuarios"),
     __metadata("design:paramtypes", [usuario_repository_1.UsuarioRepository])

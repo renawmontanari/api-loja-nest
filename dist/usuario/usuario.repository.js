@@ -20,6 +20,19 @@ let UsuarioRepository = class UsuarioRepository {
         const possivelUsuario = this.usuarios.find((usuario) => usuario.email === email);
         return possivelUsuario !== undefined;
     }
+    async atualizar(id, dadosDeAtualizacao) {
+        const possivelUsuario = this.usuarios.find((usuario) => usuario.id === id);
+        if (!possivelUsuario) {
+            throw new Error("Usuário não encontrado!");
+        }
+        Object.entries(dadosDeAtualizacao).forEach(([chave, valor]) => {
+            if (chave === "id") {
+                return;
+            }
+            possivelUsuario[chave] = valor;
+        });
+        return possivelUsuario;
+    }
 };
 exports.UsuarioRepository = UsuarioRepository;
 exports.UsuarioRepository = UsuarioRepository = __decorate([
