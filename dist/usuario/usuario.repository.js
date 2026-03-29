@@ -16,6 +16,10 @@ let UsuarioRepository = class UsuarioRepository {
     async listar() {
         return this.usuarios;
     }
+    async encontrarPorEmail(email) {
+        const possivelUsuario = this.usuarios.find((usuario) => usuario.email === email);
+        return possivelUsuario !== undefined;
+    }
 };
 exports.UsuarioRepository = UsuarioRepository;
 exports.UsuarioRepository = UsuarioRepository = __decorate([

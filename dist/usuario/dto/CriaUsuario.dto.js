@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CriaUsuarioDTO = void 0;
 const class_validator_1 = require("class-validator");
+const email_unico_validator_1 = require("../validacao/email-unico.validator");
 class CriaUsuarioDTO {
     nome;
     email;
@@ -18,15 +19,16 @@ class CriaUsuarioDTO {
 }
 exports.CriaUsuarioDTO = CriaUsuarioDTO;
 __decorate([
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsNotEmpty)({ message: "O nome é obrigatório!" }),
     __metadata("design:type", String)
 ], CriaUsuarioDTO.prototype, "nome", void 0);
 __decorate([
-    (0, class_validator_1.IsEmail)(),
+    (0, class_validator_1.IsEmail)(undefined, { message: "O email deve ser válido!" }),
+    (0, email_unico_validator_1.EmailUnico)({ message: "O email já está em uso!" }),
     __metadata("design:type", String)
 ], CriaUsuarioDTO.prototype, "email", void 0);
 __decorate([
-    (0, class_validator_1.MinLength)(6),
+    (0, class_validator_1.MinLength)(6, { message: "A senha deve conter no mínimo 6 caracteres!" }),
     __metadata("design:type", String)
 ], CriaUsuarioDTO.prototype, "senha", void 0);
 //# sourceMappingURL=CriaUsuario.dto.js.map

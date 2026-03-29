@@ -9,12 +9,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const usuario_module_1 = require("./usuario/usuario.module");
+const usuario_controller_1 = require("./usuario/usuario.controller");
+const usuario_repository_1 = require("./usuario/usuario.repository");
+const email_unico_validator_1 = require("./usuario/validacao/email-unico.validator");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [usuario_module_1.UsuarioModule],
+        controllers: [usuario_controller_1.UsuarioController],
+        providers: [usuario_repository_1.UsuarioRepository, email_unico_validator_1.EmailUnicoValidator],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map
