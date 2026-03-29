@@ -16,14 +16,21 @@ exports.UsuarioController = void 0;
 const common_1 = require("@nestjs/common");
 const usuario_repository_1 = require("./usuario.repository");
 const CriaUsuario_dto_1 = require("./dto/CriaUsuario.dto");
+const usuario_entity_1 = require("./usuario.entity");
+const uuid_1 = require("uuid");
 let UsuarioController = class UsuarioController {
     UsuarioRepository;
     constructor(UsuarioRepository) {
         this.UsuarioRepository = UsuarioRepository;
     }
     async criaUsuario(dadosDoUsuario) {
-        this.UsuarioRepository.salvar(dadosDoUsuario);
-        return dadosDoUsuario;
+        const usuarioEntity = new usuario_entity_1.UsuarioEntity();
+        usuarioEntity.email = dadosDoUsuario.email;
+        usuarioEntity.senha = dadosDoUsuario.senha;
+        usuarioEntity.nome = dadosDoUsuario.nome;
+        usuarioEntity.id = (0, uuid_1.v4)();
+        this.UsuarioRepository.salvar(usuarioEntity);
+        return { id: usuarioEntity.id, message: "Usuário criado com sucesso!" };
     }
     async listarUsuarios() {
         return this.UsuarioRepository.listar();

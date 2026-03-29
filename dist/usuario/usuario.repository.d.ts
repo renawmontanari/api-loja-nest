@@ -1,7 +1,7 @@
-import { CriaUsuarioDTO } from "./dto/CriaUsuario.dto";
+import { UsuarioEntity } from "./usuario.entity";
 export declare class UsuarioRepository {
     private usuarios;
-    salvar(usuario: CriaUsuarioDTO): Promise<void>;
-    listar(): Promise<CriaUsuarioDTO[]>;
+    salvar(usuario: UsuarioEntity): Promise<void>;
+    listar(): Promise<UsuarioEntity[]>;
     encontrarPorEmail(email: string): Promise<boolean>;
 }
