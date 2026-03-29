@@ -1,5 +1,6 @@
+import { CriaUsuarioDTO } from "./dto/CriaUsuario.dto";
 export declare class UsuarioRepository {
     private usuarios;
-    salvar(usuario: string): Promise<void>;
-    listar(): Promise<string[]>;
+    salvar(usuario: CriaUsuarioDTO): Promise<void>;
+    listar(): Promise<CriaUsuarioDTO[]>;
 }
