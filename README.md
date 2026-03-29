@@ -20,7 +20,6 @@ Uma API RESTful construída com **NestJS** para gerenciar usuários e produtos d
 - **Validação**: class-validator
 - **Transformação**: class-transformer
 - **UUID**: v13.0.0
-- **Testes**: Jest, Supertest
 - **Linting**: ESLint, Prettier
 
 ## 📦 Instalação
