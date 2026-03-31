@@ -14,6 +14,7 @@ import { v4 as uuid } from "uuid";
 import { ListaUsuarioDTO } from "./dto/ListaUsuario.dto";
 import { AtualizaUsuarioDTO } from "./dto/AtualizaUsuario.dto";
 
+// Ajustes realizados
 @Controller("/usuarios")
 export class UsuarioController {
   constructor(private UsuarioRepository: UsuarioRepository) {}
